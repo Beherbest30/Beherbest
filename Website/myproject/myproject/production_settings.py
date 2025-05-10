@@ -6,6 +6,14 @@ import os
 import dj_database_url
 from .settings import *  # Import base settings
 
+# Remove Google Drive settings
+if 'GOOGLE_DRIVE_API_CREDENTIALS' in globals():
+    del GOOGLE_DRIVE_API_CREDENTIALS
+if 'GOOGLE_DRIVE_CREDENTIALS_PATH' in globals():
+    del GOOGLE_DRIVE_CREDENTIALS_PATH
+if 'GOOGLE_DRIVE_SCOPES' in globals():
+    del GOOGLE_DRIVE_SCOPES
+
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = os.environ.get('DEBUG', 'False').lower() == 'true'
 
