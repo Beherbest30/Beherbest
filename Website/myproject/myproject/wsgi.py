@@ -11,6 +11,10 @@ import os
 
 from django.core.wsgi import get_wsgi_application
 
-os.environ.setdefault('DJANGO_SETTINGS_MODULE', 'myproject.settings')
+# Check if we're running on Render
+if 'RENDER' in os.environ:
+    os.environ.setdefault('DJANGO_SETTINGS_MODULE', 'myproject.production_settings')
+else:
+    os.environ.setdefault('DJANGO_SETTINGS_MODULE', 'myproject.settings')
 
 application = get_wsgi_application()
